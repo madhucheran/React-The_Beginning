@@ -8,7 +8,7 @@ Each topic is documented in Markdown files for easy reference.
 ## 📅 Progress Timeline
 
 ### September 2025
-1. [01 Destructuring Objects and Arrays](./Js_Learnings/Js_React_Basics.md)
+1. [01 Destructuring Objects and Arrays](./Js_Learnings/2025-09-02-Destructuring_Object_and_Arrays.md)
 
 ---
 
