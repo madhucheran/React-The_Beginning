@@ -1,0 +1,50 @@
+name: 📖 Update Progress Timeline
+
+on:
+  push:
+    paths:
+      - "Js_Learnings/*.md"
+      - "!README.md"
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Generate timeline section
+        run: |
+          echo "## 📅 Progress Timeline" > TIMELINE.md
+          echo "" >> TIMELINE.md
+
+          # Sort files by YYYY-MM-DD prefix
+          for file in $(ls Js_Learnings/*.md | sort); do
+            FNAME=$(basename "$file" .md)
+            TITLE=$(echo "$FNAME" | sed -E 's/^[0-9]{4}-[0-9]{2}-[0-9]{2}-//')
+            TITLE=$(echo "$TITLE" | tr '_' ' ')
+            TITLE=$(echo "$TITLE" | sed 's/\b\(.\)/\u\1/g')
+            echo "- [$TITLE](./$file)" >> TIMELINE.md
+          done
+
+          echo "" >> TIMELINE.md
+          echo "---" >> TIMELINE.md
+
+          awk '
+          BEGIN {flag=0}
+          /## 📅 Progress Timeline/ {print; system("cat TIMELINE.md"); flag=1; next}
+          /---/ && flag==1 {flag=0; next}
+          flag==0 {print}
+          ' README.md > README_new.md
+
+          mv README_new.md README.md
+          rm TIMELINE.md
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "🔄 Auto-update Progress Timeline" || echo "No changes"
+          git push
