@@ -1,1 +1,2 @@
-## Rest and Spread Operator
+Rest and Spread Operators in JavaScript:
+
