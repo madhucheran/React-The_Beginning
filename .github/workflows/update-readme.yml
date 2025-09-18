@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0   
 
       - name: Generate timeline section
         run: |
@@ -51,6 +53,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
           git commit -m "🔄 Auto-update Progress Timeline" || echo "No changes"
-          git pull --rebase origin main 
+          git pull --rebase origin main
           git push
-
