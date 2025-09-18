@@ -9,7 +9,14 @@ Each topic is documented in Markdown files for easy reference.
 ## 📅 Progress Timeline
 
 - [Destructuring Object And Arrays](./Js_Learnings/2025-09-02-Destructuring_Object_and_Arrays.md)
-- [Rest And Spread Operator](./Js_Learnings/Rest_and_Spread_Operator.md)
+- [Rest And Spread Operator](./Js_Learnings/2025-09-18-Rest_and_Spread_Operator.md)
+
+---
+## 📅 Progress Timeline
+## 📅 Progress Timeline
+
+- [Destructuring Object And Arrays](./Js_Learnings/2025-09-02-Destructuring_Object_and_Arrays.md)
+- [Rest And Spread Operator](./Js_Learnings/2025-09-18-Rest_and_Spread_Operator.md)
 
 ---
 
