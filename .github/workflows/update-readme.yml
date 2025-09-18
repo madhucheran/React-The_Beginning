@@ -5,6 +5,10 @@ on:
     paths:
       - "Js_Learnings/*.md"
       - "!README.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write   # ✅ allow bot to push commits
 
 jobs:
   update-readme:
