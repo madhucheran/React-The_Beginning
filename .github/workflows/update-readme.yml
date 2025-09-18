@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository with SSH
         uses: actions/checkout@v3
         with:
-          ssh-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}   # ✅ Use your SSH private key
+          ssh-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
 
       - name: Generate timeline section
         run: |
@@ -47,10 +47,11 @@ jobs:
           mv README_new.md README.md
           rm TIMELINE.md
 
-      - name: Commit changes
+      - name: Commit and Pull Remote Changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
           git commit -m "🔄 Auto-update Progress Timeline" || echo "No changes"
-          git push origin main   # ✅ Push with SSH now
+          git pull --rebase origin main 
+          git push origin main
